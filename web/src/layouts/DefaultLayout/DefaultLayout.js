@@ -1,7 +1,7 @@
 import { useAuth } from '@redwoodjs/auth'
 import { routes, navigate, Link } from '@redwoodjs/router'
 
-import { LogoutIcon } from 'src/components/Icons'
+import { LogoutIcon, MetamaskIcon } from 'src/components/Icons'
 import Logo from 'src/components/Logo'
 
 const truncate = (text, length = 50) => {
@@ -10,11 +10,20 @@ const truncate = (text, length = 50) => {
 }
 
 const DefaultLayout = ({ children }) => {
-  const { isAuthenticated, currentUser, logOut } = useAuth()
+  const { isAuthenticated, currentUser, logOut, logIn } = useAuth()
 
   const onLogOut = () => {
     logOut()
     navigate(routes.home())
+  }
+
+  const onLogin = async (walletType) => {
+    try {
+      await logIn({ type: walletType })
+      navigate(redirectTo || routes.home())
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   const loginButtons = isAuthenticated ? (
@@ -36,11 +45,15 @@ const DefaultLayout = ({ children }) => {
   ) : (
     <div className="justify-end">
       <button
-        onClick={() => navigate(routes.login())}
-        to="login"
-        className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
+        className={
+          'mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border px-4 py-2 text-base font-medium shadow-sm hover:bg-gray-300'
+        }
+        onClick={onLogin}
       >
-        Log in
+        <div className="mr-4">
+          <MetamaskIcon />
+        </div>
+        Log in with Ethereum
       </button>
     </div>
   )
@@ -49,7 +62,7 @@ const DefaultLayout = ({ children }) => {
     <div className="flex min-h-screen flex-col">
       <header className="relative bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex items-center justify-between border-b-2 border-gray-100 py-6  md:space-x-10">
+          <div className="flex items-center justify-between border-b-2 border-gray-100 py-3  md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <Link to="/">
                 <Logo />
@@ -68,30 +81,7 @@ const DefaultLayout = ({ children }) => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
               <div className="flex justify-start  lg:w-0 lg:flex-1">
-                <p className="mr-4">
-                  © {new Date().getFullYear()} RedwoodJS + Ethereum Template
-                  [WEB 3]
-                </p>
-                <p>
-                  Made with{' '}
-                  <a
-                    className="text-blue-600"
-                    target="_blank"
-                    href="https://redwoodjs.com"
-                    rel="noreferrer"
-                  >
-                    RedwoodJS
-                  </a>
-                  {' & '}
-                  <a
-                    className="text-blue-600"
-                    target="_blank"
-                    href="https://github.com/oneclickdapp/ethereum-auth"
-                    rel="noreferrer"
-                  >
-                    @oneclickdapp/ethereum-auth
-                  </a>
-                </p>
+                <p className="mr-4">Copyright © {new Date().getFullYear()}</p>
               </div>
             </div>
           </div>

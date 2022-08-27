@@ -9,8 +9,7 @@ const Routes = () => {
     <Router>
       <Set wrap={DefaultLayout} whileLoadingPage={Loader}>
         <Route path="/" page={HomePage} name="home" />
-        <Route path="/login" page={LoginPage} name="login" />
-        <Private unauthenticated="login">
+        <Private unauthenticated="home">
           <Route path="/users" page={UserUsersPage} name="users" />
           <Route path="/users/{id}" page={UserUserPage} name="user" />
         </Private>
