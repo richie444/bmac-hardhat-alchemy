@@ -1,5 +1,5 @@
 import { useAuth } from '@redwoodjs/auth'
-import { routes, navigate, Link } from '@redwoodjs/router'
+import { routes, navigate, Link, useParams } from '@redwoodjs/router'
 
 import { LogoutIcon, MetamaskIcon } from 'src/components/Icons'
 import Logo from 'src/components/Logo'
@@ -11,6 +11,7 @@ const truncate = (text, length = 50) => {
 
 const DefaultLayout = ({ children }) => {
   const { isAuthenticated, currentUser, logOut, logIn } = useAuth()
+  const { redirectTo } = useParams()
 
   const onLogOut = () => {
     logOut()
