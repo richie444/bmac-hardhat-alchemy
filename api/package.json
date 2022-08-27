@@ -1,0 +1,12 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@redwoodjs/api": "2.2.3",
+    "@redwoodjs/graphql-server": "2.2.3",
+    "eth-sig-util": "^3.0.1",
+    "ethereumjs-util": "^7.1.5",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
