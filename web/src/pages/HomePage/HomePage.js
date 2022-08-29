@@ -169,14 +169,18 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" />
       <div className="mx-auto flex max-w-xl items-start space-x-4">
-        {!currentUser && (
-          <div className="min-w-2xl absolute z-10 flex h-[30vh] items-center justify-around bg-gray-400 px-28 opacity-90">
+        {
+          <div
+            className={`min-w-2xl absolute z-10 flex h-[30vh] items-center justify-around bg-gray-400 px-28 opacity-90 ${
+              currentUser && 'hidden'
+            }`}
+          >
             <h1 className="text-center text-2xl font-bold">
               <p className="text-gray-900">🔒 Locked</p>
               <p className="text-gray-900">Login with Metamask 🦊 to Access</p>
             </h1>
           </div>
-        )}
+        }
         <div className="flex w-full justify-between">
           <div className="my-auto">
             <div className="overflow-hidden rounded-lg bg-white px-4 py-5 shadow sm:p-6">
