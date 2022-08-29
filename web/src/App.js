@@ -11,6 +11,7 @@ import Routes from 'src/Routes'
 
 import './scaffold.css'
 import './index.css'
+import { Toaster } from '@redwoodjs/web/dist/toast'
 
 let ethereum
 
@@ -49,11 +50,12 @@ const ApolloInjector = ({ children }) => {
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
-    <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
+    <RedwoodProvider titleTemplate="%AppTitle">
       <FetchConfigProvider>
         <ApolloInjector>
           <AuthProvider client={ethereum} type="ethereum">
             <RedwoodApolloProvider>
+              <Toaster />
               <Routes />
             </RedwoodApolloProvider>
           </AuthProvider>

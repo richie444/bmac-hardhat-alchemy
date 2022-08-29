@@ -14559,7 +14559,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^5.4.7":
+"ethers@npm:^5.4.7, ethers@npm:^5.7.0":
   version: 5.7.0
   resolution: "ethers@npm:5.7.0"
   dependencies:
@@ -29401,6 +29401,7 @@ __metadata:
     assert: ^2.0.0
     autoprefixer: ^10.4.8
     crypto-browserify: ^3.12.0
+    ethers: ^5.7.0
     https-browserify: ^1.0.0
     os-browserify: ^0.3.0
     postcss: ^8.4.16
