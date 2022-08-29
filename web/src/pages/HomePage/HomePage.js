@@ -63,7 +63,7 @@ const HomePage = () => {
     try {
       const { ethereum } = window
       if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum)
+        const provider = new ethers.providers.Web3Provider(ethereum, 'any')
         const signer = provider.getSigner()
         const buyMeACoffee = new ethers.Contract(
           contractAddress,
@@ -88,7 +88,7 @@ const HomePage = () => {
     try {
       const { ethereum } = window
       if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum)
+        const provider = new ethers.providers.Web3Provider(ethereum, 'any')
         const signer = provider.getSigner()
         const buyMeACoffee = new ethers.Contract(
           contractAddress,
@@ -111,7 +111,7 @@ const HomePage = () => {
     try {
       const { ethereum } = window
       if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum)
+        const provider = new ethers.providers.Web3Provider(ethereum, 'any')
 
         const balance = await provider.getBalance(contractAddress)
         setBalance(ethers.utils.formatEther(balance))
