@@ -8,7 +8,7 @@
 [web]
   title = "[Web 3.0]Buy Me a Coffee"
   port = 8910
-  apiUrl = "/.redwood/functions" # you can customise graphql and dbauth urls individually too: see https://redwoodjs.com/docs/app-configuration-redwood-toml#api-paths
+  apiUrl = "/api"
   includeEnvironmentVariables = ['ETHEREUM_JWT_SECRET', 'DATABASE_URL', 'INFURA_ID'] # any ENV vars that should be available to the web side, see https://redwoodjs.com/docs/environment-variables#web
 [api]
   port = 8911
