@@ -40,18 +40,22 @@ const HomePage = () => {
           signer
         )
 
-        const coffeeTxn = await buyMeACoffee.buyCoffee(
-          name ? name : 'anon',
-          message ? message : 'Enjoy your coffee!',
-          { value: ethers.utils.parseEther('0.01') }
-        )
-        setName('')
-        setMessage('')
-        toast.promise(coffeeTxn.wait(), {
-          loading: 'Buying Coffee..' + '\n' + `Txn Pending...`,
-          success: 'Coffee purchased!' + '\n' + 'Thanks for buying!',
-          error: 'Error ' + coffeeTxn.hash + ': ' + coffeeTxn.error,
-        })
+        try {
+          const coffeeTxn = await buyMeACoffee.buyCoffee(
+            name ? name : 'anon',
+            message ? message : 'Enjoy your coffee!',
+            { value: ethers.utils.parseEther('0.01') }
+          )
+          setName('')
+          setMessage('')
+          toast.promise(coffeeTxn.wait(), {
+            loading: 'Buying Coffee..' + '\n' + `Txn Pending...`,
+            success: 'Coffee purchased!' + '\n' + 'Thanks for buying!',
+            error: 'Error ' + coffeeTxn.hash + ': ' + coffeeTxn.error,
+          })
+        } catch (error) {
+          toast.error(parseInt(error.code) ? error.message : error.code)
+        }
       }
     } catch (error) {
       toast.error(error)
@@ -69,11 +73,6 @@ const HomePage = () => {
           contractABI,
           provider
         )
-        console.log({
-          provider,
-          buyMeACoffee,
-          name: provider.getSigner(),
-        })
         // Check if we are on rinkeby network.
         try {
           console.log('fetching memos from the blockchain..')
