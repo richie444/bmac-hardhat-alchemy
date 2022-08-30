@@ -69,10 +69,20 @@ const HomePage = () => {
           contractABI,
           provider
         )
-        console.log('fetching memos from the blockchain..')
-        const memos = await buyMeACoffee.getMemos()
-        console.log('fetched!')
-        setMemos(memos)
+        console.log({
+          provider,
+          buyMeACoffee,
+          name: provider.getSigner(),
+        })
+        // Check if we are on rinkeby network.
+        try {
+          console.log('fetching memos from the blockchain..')
+          const memos = await buyMeACoffee.getMemos()
+          console.log('fetched!')
+          setMemos(memos)
+        } catch {
+          toast.error('Please connect to the Rinkeby network.')
+        }
       } else {
         toast.error('Metamask is not connected')
       }
