@@ -1,15 +1,17 @@
+import { useState, useEffect } from 'react'
+
+import { ethers } from 'ethers'
+
 import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
-import abi from 'src/utils/BMAC.abi.json'
-import { ethers } from 'ethers'
 import { toast } from '@redwoodjs/web/dist/toast'
 
-import { useState, useEffect } from 'react'
+import abi from 'src/utils/BMAC.abi.json'
 
 const HomePage = () => {
   const { ethereum } = window
   // Contract Address & ABI
-  const contractAddress = '0x7eB917b93030d0b8dfE1F366935Edc92E114A643'
+  const contractAddress = '0xDe050E9C2e15B0D111ff4c563cAC46f0DD4c009b'
   const contractABI = abi.abi
 
   // Component state
@@ -255,24 +257,39 @@ const HomePage = () => {
         </div>
       </div>
       {/* Received Memos */}
-      <ul role="list" className="divide-y divide-gray-200">
-        <h2 className="text-xl font-bold leading-5 text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
-          Memos
-        </h2>
-        {memos.map((memo, idx) => (
-          <li key={idx} className="flex py-4">
-            <img
-              className="h-10 w-10 rounded-full"
-              src={`https://avatars.dicebear.com/api/pixel-art/${memo?.from?.toLowerCase()}.svg`}
-              alt=""
-            />
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900">{memo.name}</p>
-              <p className="text-sm text-gray-500">{memo.message}</p>
+      <table className="min-w-full table-auto divide-y divide-blue-200 bg-orange-100">
+        <div role="list" className="divide-y divide-gray-200">
+          <h2 className="text-xl font-bold leading-5 text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
+            Memos
+          </h2>
+          <div className="flex object-fill text-3xl text-yellow-900">
+            <ul>Name</ul>
+            <ul className="px-80">Message</ul>
+          </div>
+
+          {memos.map((memo, idx) => (
+            <div key={idx} className="min-w-full divide-y divide-blue-200">
+              <tbody className="px-34">
+                <tr className="flex-auto">
+                  <td>
+                    <img
+                      className="py-auto h-10 w-10 rounded-full"
+                      src={`https://avatars.dicebear.com/api/pixel-art/${memo?.from?.toLowerCase()}.svg`}
+                      alt=""
+                    />
+                  </td>
+                  <td className="border-43 w-23 py-6 px-4 md:w-6 lg:w-40">
+                    {memo.name}
+                  </td>
+                  <td className="lg:w-50 md:w-50 justify-start justify-center px-44 text-yellow-900 ">
+                    {memo.message}
+                  </td>
+                </tr>
+              </tbody>
             </div>
-          </li>
-        ))}
-      </ul>
+          ))}
+        </div>
+      </table>
     </>
   )
 }

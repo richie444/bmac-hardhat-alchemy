@@ -60,8 +60,8 @@ const DefaultLayout = ({ children }) => {
   )
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="relative bg-white">
+    <div className="flex min-h-screen flex-col bg-orange-200">
+      <header className="relative bg-orange-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center justify-between border-b-2 border-gray-100 py-3  md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -78,7 +78,7 @@ const DefaultLayout = ({ children }) => {
       </div>
 
       <footer>
-        <div className="relative mt-8 bg-gray-100">
+        <div className="relative mt-8 bg-orange-100">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
               <div className="flex justify-start  lg:w-0 lg:flex-1">
