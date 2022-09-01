@@ -1,4 +1,5 @@
-{ "homepage": "",
+{
+  "homepage": "",
   "private": true,
   "workspaces": {
     "packages": [
@@ -10,7 +11,8 @@
   },
   "devDependencies": {
     "@redwoodjs/core": "2.2.3",
-    "prettier-plugin-tailwindcss": "^0.1.13"
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "prisma": "^4.3.0"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",

@@ -180,8 +180,8 @@ const HomePage = () => {
       <div className="mx-auto flex max-w-xl items-start space-x-4">
         {
           <div
-            className={`min-w-2xl absolute z-10 flex h-[30vh] items-center justify-around bg-gray-400 px-28 opacity-90 ${
-              currentUser && 'hidden'
+            className={`min-w-2xl absolute z-10 flex h-[29vh] items-center justify-around bg-gray-400 px-28 opacity-90 ${
+              currentUser && 'hidden rounded-lg'
             }`}
           >
             <h1 className="text-center text-2xl font-bold">
@@ -257,7 +257,7 @@ const HomePage = () => {
         </div>
       </div>
       {/* Received Memos */}
-      <table className="min-w-full table-auto divide-y divide-blue-200 bg-orange-100">
+      <table className="min-w-full table-auto divide-y divide-blue-200 bg-orange-100 rounded-lg border-b w-2 rounded">
         <div role="list" className="divide-y divide-gray-200">
           <h2 className="text-xl font-bold leading-5 text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
             Memos
@@ -270,10 +270,10 @@ const HomePage = () => {
           {memos.map((memo, idx) => (
             <div key={idx} className="min-w-full divide-y divide-blue-200">
               <tbody className="px-34">
-                <tr className="flex-auto">
+                <tr className="flex-auto w-6">
                   <td>
                     <img
-                      className="py-auto h-10 w-10 rounded-full"
+                      className="py-auto h-10 w-50 rounded-full"
                       src={`https://avatars.dicebear.com/api/pixel-art/${memo?.from?.toLowerCase()}.svg`}
                       alt=""
                     />
@@ -281,7 +281,7 @@ const HomePage = () => {
                   <td className="border-43 w-23 py-6 px-4 md:w-6 lg:w-40">
                     {memo.name}
                   </td>
-                  <td className="lg:w-50 md:w-50 justify-start justify-center px-44 text-yellow-900 ">
+                  <td className="lg:w-50 md:w-50 justify-start justify-center px-44 text-yellow-900 w-23 border-43 ">
                     {memo.message}
                   </td>
                 </tr>
